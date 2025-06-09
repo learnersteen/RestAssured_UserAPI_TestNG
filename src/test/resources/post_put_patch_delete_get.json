@@ -1,0 +1,20 @@
+[
+  {
+    "testCaseId": "TC01",
+    "method": "POST",
+    "endpoint": "/uap/createusers",
+    "expectedStatusCode": 201,
+    "userFirstName":  "tstuserfirstonee",
+    "userLastName":  "tstuserlastonee", 
+    "userContactNumber": 2301269897,   
+    "userEmailId": "tstuserfirstonee.tstuserlastonee@gmail.com",
+    "plotNumber": "pl-05236340",
+    "street": "norwaystreet",
+    "state": "Utah",
+    "country": "USA",
+     "zipCode": 84128
+  }
+
+  
+]
+

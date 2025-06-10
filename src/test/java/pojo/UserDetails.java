@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserDetails {
 	
-	 @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	//private int userId;
-	 private Integer userId;
+	private Integer userId;
 	 
     private String userFirstName;
     private String userLastName;

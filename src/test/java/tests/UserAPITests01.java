@@ -8,12 +8,12 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import api.BaseTest;
+import api.BaseTest01;
 import pojo.UserAddress;
 import pojo.UserDetails;
 import utils.TestCaseLoader;
 
-public class UserAPITests01 extends BaseTest {
+public class UserAPITests01 extends BaseTest01 {
 	
 	@Test
 	public void userAPITests() throws Exception {

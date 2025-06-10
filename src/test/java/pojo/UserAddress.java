@@ -47,10 +47,10 @@ public class UserAddress {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public int getZipCode() {
+	public Integer getZipCode() {
 		return zipCode;
 	}
-	public void setZipCode(int zipCode) {
+	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
 	}
 	

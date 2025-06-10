@@ -21,5 +21,3 @@ public class BaseTest {
                 .header("Content-Type", "application/json");
     }
 }
-
-

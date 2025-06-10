@@ -1,0 +1,277 @@
+[
+   {"testCaseId": "POST_TC_01",
+      "method": "POST",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "Ava",
+      "userLastName": "Daniel",
+      "userContactNumber": 3485239579,
+      "userEmailId": "ava.daniel@example.com",
+      "plotNumber": "plot-211",
+      "street": "Laurel Avenue",
+      "state": "Virginia",
+      "country": "USA",
+      "zipCode": 23218,
+
+      "expectedStatusCode":201
+      
+   },
+
+   {
+
+      "testCaseId": "POST_TC_02",
+      "method": "POST",
+      "endpoint":"/uap/createusers",
+       "userFirstName": "",
+      "userLastName": "Rodriguez",
+      "userContactNumber": 3686091546,
+      "userEmailId": "harper.rodriguez@example.com",
+      "plotNumber": "plot-22",
+      "street": "Maple Avenue",
+      "state": "California",
+      "country": "USA",
+      "zipCode": 90210,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "user FirstName is mandatory and should contains alphabets only"
+   },
+
+      {
+      "testCaseId": "POST_TC_03",
+      "method": "POST",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "John",
+      "userLastName": "",
+      "userContactNumber": 3061538206,
+      "userEmailId": "john.wilson@example.com",
+      "plotNumber": "plot-33",
+      "street": "Elm Street",
+      "state": "Texas",
+      "country": "USA",
+      "zipCode": 73301,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User Last Name is mandatory and should contains alphabets only"
+   },
+
+    {
+      "testCaseId": "POST_TC_04",
+      "endpoint":"/uap/createusers",
+       "userFirstName": "William",
+      "userLastName": "Rodriguez",
+      "userContactNumber":7097554709,
+      "plotNumber": "plot-55",
+      "street": "Pine Street",
+      "state": "Illinois",
+      "country": "USA",
+      "zipCode": 60007,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User email Id is required and should be in proper email format"
+   },
+
+   {
+      "testCaseId": "POST_TC_05",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "Benjamin",
+      "userLastName": "Smith",
+      "userContactNumber":3432114614,
+       "userEmailId": "benjamin.smith@example.com",
+      "plotNumber": "plot-66",
+      "street": "Willow Drive",
+      "state": "Florida",
+      "country": "USA",
+      "zipCode": 33101,
+
+      "expectedStatusCode":409,
+      "expectedStatusText": "409 Conflict",
+      "expectedErrorMessage": "User already exist with same contact number"
+   },
+
+   {
+      "testCaseId": "POST_TC_06",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "Henry",
+      "userLastName": "Jones",
+      "userContactNumber": 3908601466,
+      "userEmailId": "lucas.jackson@example.com",
+      "plotNumber": "plot-77",
+      "street": "Birch Lane",
+      "state": "Ohio",
+      "country": "USA",
+      "zipCode": 44101,
+
+      "expectedStatusCode":409,
+      "expectedStatusText": "409 Conflict",
+      "expectedErrorMessage": "User already exist with same email id"
+   },
+
+
+      {
+      "testCaseId": "POST_TC_07",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"William@134",
+      "userLastName": "Garcia",
+      "userContactNumber": 3671902121,
+      "userEmailId": "william.garcia@example.com",
+      "plotNumber": "plot-88",
+      "street": "Ash Street",
+      "state": "Michigan",
+      "country": "USA",
+      "zipCode": 48201,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "user FirstName is mandatory and should contains alphabets only"
+   },
+
+   {
+      "testCaseId": "POST_TC_08",
+      "endpoint":"/uap/createusers",
+       "userFirstName": "Henry",
+      "userLastName": "Lopez@12356",
+      "userContactNumber": 3689034855,
+      "userEmailId": "henry.lopez@example.com",
+      "plotNumber": "plot-99",
+      "street": "Poplar Avenue",
+      "state": "Pennsylvania",
+      "country": "USA",
+      "zipCode": 19101,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User Last Name is mandatory and should contains alphabets only"
+   },
+
+    {
+      "testCaseId": "POST_TC_09",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "William",
+      "userLastName": "Gonzalez",
+      "userContactNumber": 33697892539,
+      "userEmailId": "william.gonzalez@example.com",
+      "plotNumber": "plot-101",
+      "street": "Spruce Street",
+      "state": "North Carolina",
+      "country": "USA",
+      "zipCode": 27501,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Phone Number is required and should contains 10 numeric values only"
+   },
+
+   {
+      "testCaseId": "POST_TC_10",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "Emily",
+      "userLastName": "Davis",
+      "userContactNumber": 3272014864,
+      "userEmailId": "emily.davis1$%^$^$&$@example.com",
+      "plotNumber": "plot-121",
+      "street": "Hickory Drive",
+      "state": "Arizona",
+      "country": "USA",
+      "zipCode": 85001,
+     
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User email Id is required and should be in proper email format"
+   },
+
+     {
+      "testCaseId": "POST_TC_11",
+      "endpoint":"/uap/createusers",
+       "userFirstName": "Sophia",
+      "userLastName": "Smith",
+      "userContactNumber": 3666216097,
+      "userEmailId": "sophia.smith@example.com",
+      "plotNumber": "plot4656131",
+      "street": "Sycamore Road",
+      "state": "Washington",
+      "country": "USA",
+      "zipCode": 98001,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Plot number should contain alphaNumeric values only"
+   },
+
+
+        {
+      "testCaseId": "POST_TC_12",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "Evelyn",
+      "userLastName": "Rodriguez",
+      "userContactNumber": 3403290698,
+      "userEmailId": "evelyn.rodriguez@example.com",
+      "plotNumber": "plot-141",
+      "street": "Redwood-Lane",
+      "state": "Oregon",
+      "country": "USA",
+      "zipCode": 97201,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Street should contain alphabet characters only"
+   },
+
+    {
+      "testCaseId": "POST_TC_13",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "Sophia",
+      "userLastName": "Davis",
+      "userContactNumber": 3744769198,
+      "userEmailId": "sophia.davis@example.com",
+      "plotNumber": "plot-151",
+      "street": "Chestnut Street",
+      "state": "Massachusetts256",
+      "country": "USA",
+      "zipCode": 82108,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "State should contain alphabet characters only"
+   },
+
+   {
+      "testCaseId": "POST_TC_14",
+      "endpoint":"/uap/createusers",
+     
+      "userFirstName": "Harper",
+      "userLastName": "Moore",
+      "userContactNumber": 3091784035,
+      "userEmailId": "harper.moore@example.com",
+      "plotNumber": "plot-161",
+      "street": "Magnolia Avenue",
+      "state": "Tennessee",
+      "country": "USA589",
+      "zipCode": 37201,
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Country should contain alphabet characters only"
+   },
+
+   {
+      "testCaseId": "POST_TC_15",
+      "endpoint":"/uap/createusers",
+	  "userFirstName": "Ava",
+	   "userLastName": "Daniel",
+	   "userContactNumber": 3283907698,
+	   "userEmailId": "ava01.daniel01@example.com",
+	   "plotNumber": "plot-211",
+	   "street": "Laurel Avenue",
+	   "state": "Virginia",
+	   "country": "USA",
+	   "zipCode": "23218"
+
+      "expectedStatusCode":201
+      
+   }
+
+
+]

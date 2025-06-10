@@ -15,7 +15,7 @@ import pojo.UserAddress;
 import pojo.UserDetails;
 import utils.TestCaseLoader;
 	
-	public class test03  extends BaseTest01 {
+	public class UserAPIPOST_Positive_Negative_Flows  extends BaseTest01 {
 
 	
 	    @Test(priority = 1)

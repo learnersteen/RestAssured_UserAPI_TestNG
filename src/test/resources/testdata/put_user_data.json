@@ -1,0 +1,100 @@
+[
+ {
+    "testCaseId": "TC01",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/{{validuserId}}",
+    "userFirstName": "William",
+      "userLastName": "Gonzalez",
+      "userContactNumber": 5681025879,
+      "userEmailId": "William02.Gonzalez02@example.com",
+      "plotNumber": "plot-101",
+      "street": "Spruce Street",
+      "state": "North Carolina",
+      "country": "USA",
+      "zipCode": 27501,
+
+      "expectedStatusCode": 200
+  },
+
+  {
+    "testCaseId": "TC02",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/",
+    "userFirstName":  "Venutwo",
+    "userLastName":  "gopalatwo", 
+    "userContactNumber": 2301169896,   
+    "userEmailId": "Venu35.gopala35@gmail.com",
+    "plotNumber": "pl-05236340",
+    "street": "norwaystreet",
+    "state": "Utah",
+    "country": "USA",
+    "zipCode": 84128,
+
+   "expectedStatusCode": 404,
+   "expectedStatusText": "404 Not Found"
+  },
+
+  
+  {
+    "testCaseId": "TC03",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/",
+    "userFirstName":  "Venutwo",
+    "userLastName":  "gopalatwo", 
+    "userContactNumber": 2301169896,   
+    "userEmailId": "Venu35.gopala35@gmail.com",
+    "plotNumber": "pl-05236340",
+    "street": "norwaystreet",
+    "state": "Utah",
+    "country": "USA",
+    "zipCode": 84128,
+
+    "expectedStatusCode":400,
+   "expectedStatusText": "400 Bad Request",
+   "expectedErrorMessage": "Contact number is already in use by another user"
+  },
+
+  {
+    "testCaseId": "TC04",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/",
+    "userFirstName":  "Venutwo",
+    "userLastName":  "gopalatwo", 
+    "userContactNumber": 2301169896,   
+    "userEmailId": "lisa.ray@example.com",
+    "plotNumber": "pl-05236340",
+    "street": "norwaystreet",
+    "state": "Utah",
+    "country": "USA",
+    "zipCode": 84128,
+
+    "expectedStatusCode":400,
+   "expectedStatusText": "400 Bad Request",
+   "expectedErrorMessage": "Email id is already in use by another user"
+  },
+
+  
+  {
+    "testCaseId": "TC05",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/",
+    "userFirstName":  "Venutwo",
+    "userLastName":  "gopalatwo", 
+    "userContactNumber": 2301169896,   
+    "userEmailId": "lisa.ray@example.com",
+    "plotNumber": "pl-05236340",
+    "street": "norwaystreet",
+    "state": "Utah",
+    "country": "USA",
+    "zipCode": 84128,
+
+    "expectedStatusCode":400,
+   "expectedStatusText": "400 Bad Request",
+   "expectedErrorMessage": "Email id is already in use by another user"
+  }
+
+
+
+
+
+]

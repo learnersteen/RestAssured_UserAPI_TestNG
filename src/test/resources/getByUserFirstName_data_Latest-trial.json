@@ -4,7 +4,7 @@
     "testCaseId": "TC01",
     "method": "GET",
     "requestName": "getByUserFirstname",
-    "endpoint": "/uap/users/username/{{validUserFirstname}}",
+    "endpoint": "/uap/users/username/{{validUserFirstName}}",
     "expectedStatusCode": 200
        
   }

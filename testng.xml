@@ -2,7 +2,7 @@
 <suite name="UserAPISuite">
     <test name="User API Tests">
         <classes>
-            <class name="tests.userAPITests04"/>
+            <class name="tests.UserAPITests"/>
         </classes>
     </test>
 </suite>

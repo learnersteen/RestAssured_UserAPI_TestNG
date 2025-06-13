@@ -4,8 +4,15 @@ import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import utils.ConfigReader;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+//import org.testng.annotations.BeforeMethod;
+//import org.testng.annotations.Listeners;
 
+//import com.aventstack.chaintest.plugins.ChainTestListener;
+//import com.aventstack.extentreports.ExtentReports;
+//import com.aventstack.extentreports.ExtentTest;
+//import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+//
+//@Listeners(ChainTestListener.class)
 public class BaseTest {
 	
 	@BeforeClass

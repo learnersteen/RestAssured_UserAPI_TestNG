@@ -1,0 +1,12 @@
+[
+
+    {
+    "testCaseId": "TC01",
+    "method": "DELETE",
+    "endpoint": "/uap/deleteuser/username/{{validUserFirstName}}",
+    "expectedStatusCode": 200
+       
+  }
+
+
+]

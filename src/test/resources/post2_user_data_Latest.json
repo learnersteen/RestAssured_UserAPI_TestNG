@@ -1,0 +1,19 @@
+[
+   {"testCaseId": "POST_TC_01",
+      "method": "POST",
+      "endpoint":"/uap/createusers",
+      "userFirstName": "Chloeone",
+      "userLastName": "Longone",
+      "userContactNumber": 3098827118,
+      "userEmailId": "chloe25.long35@example.com",
+      "plotNumber": "plot-9125",
+      "street": "Harris Lakee",
+      "state": "Colorado",
+      "country": "USA",
+      "zipCode": "802091",
+
+      "expectedStatusCode":201
+      
+   }
+
+]

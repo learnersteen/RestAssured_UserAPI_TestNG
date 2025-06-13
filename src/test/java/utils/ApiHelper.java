@@ -109,6 +109,8 @@ public class ApiHelper {
 
         return response;
     }
+    
+    
 
     //METHOD ==> UPDATE USER -> PUT 
     
@@ -250,8 +252,8 @@ public class ApiHelper {
         System.out.println("DELETE Response Body: " + response.getBody().asPrettyString());
 
         // Optionally, clear stored userId and firstname after delete if you want:
-        setUserId(null);
-        setUserFirstname(null);
+       // setUserId(null);
+       // setUserFirstname(null);
 
         return response;
     }
@@ -269,5 +271,34 @@ public class ApiHelper {
 
 	    return response;
 	}
+	
+//METHOD ==> GET UserBy UserFirstName 
+	
+	
+	public static Response sendGetUserByFirstNameRequest(String endpoint) {
+	    RequestSpecification spec = BaseTest.getRequestWithBasicAuth();
+	    System.out.println("Sending GET request to endpoint: " + endpoint);
+	    Response response = spec.get(endpoint);
+	    System.out.println("GET by FirstName Response Status Code: " + response.getStatusCode());
+	    return response;
+	}
+   //METHOD ==> DELETE User by UserFirstName
+	
+	public static Response sendDeleteUserByFirstNameRequest(String endpoint) {
+	    RequestSpecification spec = BaseTest.getRequestWithBasicAuth();
+
+	    System.out.println("Sending DELETE request to endpoint: " + endpoint);
+
+	    Response response = spec.delete(endpoint);
+
+	    System.out.println("DELETE by FirstName Response Status Code: " + response.getStatusCode());
+	    System.out.println("DELETE by FirstName Response Body: " + response.getBody().asPrettyString());
+
+	    // Optionally clear stored firstname if this was the deleted user
+	    setUserFirstname(null);
+
+	    return response;
+	}
+	
     
 }

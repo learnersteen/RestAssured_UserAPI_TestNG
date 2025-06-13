@@ -1,0 +1,12 @@
+[
+     {
+    "testCaseId": "TC01",
+    "method": "PATCH",
+    "endpoint": "/uap/updateuserfields/{{validUserId}}",
+    "expectedStatusCode": 200,
+    "userContactNumber": 2301457900,   
+    "userEmailId": "Venu40.gopala40@gmail.com"
+   
+  }
+
+]

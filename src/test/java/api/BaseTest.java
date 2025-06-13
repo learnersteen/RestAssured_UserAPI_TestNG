@@ -22,6 +22,10 @@ public class BaseTest {
                 .header("Content-Type", "application/json");
     }
 	
+	  public static String getBaseURI() {
+	        return RestAssured.baseURI;
+	    }
+	
 //	@BeforeMethod
 //    // Heroapp 503 issue workaround fix
 //    public void warmUpApp() {

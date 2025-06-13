@@ -1,0 +1,12 @@
+  [
+
+    {
+    "testCaseId": "TC01",
+    "method": "GET",
+    "endpoint": "/uap/users",
+    "requestName": "getAllUsers",
+    "expectedStatusCode": 200
+       
+  }
+
+]

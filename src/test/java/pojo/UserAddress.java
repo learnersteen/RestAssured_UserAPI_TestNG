@@ -7,8 +7,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)  // skip null fields during serialization
 public class UserAddress {
 	
-	 @JsonProperty(access = JsonProperty.Access.READ_ONLY) // never send in request JSON
+	// @JsonProperty(access = JsonProperty.Access.READ_ONLY) // never send in request JSON
 	
+	//@JsonProperty(value = "addressId", access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty("addressId")
 	private Integer addressId; 
 	
 	

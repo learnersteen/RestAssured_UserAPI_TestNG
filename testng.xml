@@ -1,8 +1,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="UserAPISuite">
+<suite name="UserAPITestSuite">
     <test name="User API Tests">
         <classes>
-            <class name="tests.UserAPITests"/>
+            <class name="tests.CreateUserPOSTTest"/>
+            <class name="tests.UpdateUserPUTTest"/>
+            <class name="tests.UpdateUserPATCHTest"/>
+            <class name="tests.DeleteUserByUserIdDELETETest"/>
+            <class name="tests.DeleteUserByUserNameDELETETest"/>
+            <class name="tests.GetUserByUserIdGETTest"/>
+            <class name="tests.GetUserByUserFirstNameGETTest"/>
+            <class name="tests.GetAllUsersGETTest"/>
         </classes>
     </test>
 </suite>

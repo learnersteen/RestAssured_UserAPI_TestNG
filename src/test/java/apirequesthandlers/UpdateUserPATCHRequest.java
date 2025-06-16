@@ -1,8 +1,6 @@
 package apirequesthandlers;
 
 import java.util.Map;
-
-import hooks.BaseTest;
 import hooks.Hooks;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -25,7 +23,7 @@ public class UpdateUserPATCHRequest extends Hooks {
 		        String finalEndpoint = endpoint.replace("{{validUserId}}", String.valueOf(userId));
 		        String requestBody = APIHelperClass.convertUserToJson(user);
 
-		        RequestSpecification spec = BaseTest.getRequestWithBasicAuth();
+		        RequestSpecification spec = Hooks.validAuthAndHeader();
 
 		        System.out.println("Sending PATCH to: " + finalEndpoint);
 		        System.out.println("PATCH Body: " + requestBody);

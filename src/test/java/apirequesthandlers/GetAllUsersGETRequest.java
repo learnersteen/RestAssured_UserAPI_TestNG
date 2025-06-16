@@ -2,7 +2,8 @@ package apirequesthandlers;
 
 import java.util.Map;
 
-import hooks.BaseTest;
+
+import hooks.Hooks;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -12,7 +13,7 @@ public class GetAllUsersGETRequest {
 
 			String endpoint = (String) testCase.get("endpoint");
 			            
-		   RequestSpecification spec = BaseTest.getRequestWithBasicAuth();
+			 RequestSpecification spec = Hooks.validAuthAndHeader();
 			 
 			 System.out.println("Sending GETAllUsers request to endpoint: " + endpoint);
 			 

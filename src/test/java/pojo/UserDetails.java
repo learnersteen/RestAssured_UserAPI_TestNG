@@ -2,11 +2,17 @@ package pojo;
 
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)  // skip null fields during serialization
 public class UserDetails {
 	
-	 @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	//  @JsonProperty(access = JsonProperty.Access.READ_ONLY)  // never send in request JSON
 	//private int userId;
+	
+	 //@JsonProperty(value = "userId", access = JsonProperty.Access.READ_ONLY)
+	 //@JsonProperty(value = "userId", access = JsonProperty.Access.READ_WRITE)
+	@JsonProperty("userId")
 	 private Integer userId;
 	 
     private String userFirstName;
@@ -14,10 +20,10 @@ public class UserDetails {
     private Long userContactNumber;
     private String userEmailId;
     
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)  // skip sending in requests
     private OffsetDateTime creationTime;
     
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)  // skip sending in requests
     private OffsetDateTime lastModTime;
     
     private UserAddress userAddress;
@@ -27,6 +33,7 @@ public class UserDetails {
 	public Integer getUserId() {
 		return userId;
 	}
+	
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
@@ -73,8 +80,4 @@ public class UserDetails {
 		this.userAddress = userAddress;
 	}
 	
-
-	
-	
-
 }

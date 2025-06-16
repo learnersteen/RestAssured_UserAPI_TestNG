@@ -1,0 +1,18 @@
+[
+{
+    "testCaseId": "TC01",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/{{validUserId}}",
+    "expectedStatusCode": 200,
+    "userFirstName": "Chloe",
+    "userLastName": "Long",
+    "userContactNumber": 3094927894,
+    "userEmailId": "chloe01.long01@example.com",
+    "plotNumber": "plot-91",
+    "street": "Harris Lake",
+    "state": "Colorado",
+    "country": "USA",
+    "zipCode": "80201"
+
+}
+]

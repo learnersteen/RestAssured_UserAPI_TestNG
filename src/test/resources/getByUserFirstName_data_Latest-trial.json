@@ -1,0 +1,11 @@
+ [
+
+  {
+    "testCaseId": "TC01",
+    "method": "GET",
+    "endpoint": "/uap/users/username/{{validUserFirstName}}",
+    "expectedStatusCode": 200
+       
+  }
+
+]

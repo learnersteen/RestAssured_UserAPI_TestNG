@@ -2,10 +2,15 @@ package pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)  // skip null fields during serialization
 public class UserAddress {
 	
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	//private int addressId;
+	// @JsonProperty(access = JsonProperty.Access.READ_ONLY) // never send in request JSON
+	
+	//@JsonProperty(value = "addressId", access = JsonProperty.Access.READ_ONLY)
+	@JsonProperty("addressId")
 	private Integer addressId; 
 	
 	
@@ -13,10 +18,11 @@ public class UserAddress {
 	private String street;
 	private String state;
 	private String country;
-	private int zipCode;
+	private Integer  zipCode;
 	
 	//getters and setters 
 	
+
 	public Integer getAddressId() {
 		return addressId;
 	}
@@ -47,10 +53,13 @@ public class UserAddress {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public int getZipCode() {
+	
+
+	public Integer getZipCode() {
+//		Integer  zipCode;
 		return zipCode;
 	}
-	public void setZipCode(int zipCode) {
+	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
 	}
 	

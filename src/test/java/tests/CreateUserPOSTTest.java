@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import apirequesthandlers.CreateUserPOSTRequest;
-import apirequesthandlers.DeleteUserByUserFirstNameDELETERequest;
+import apirequesthandlers.DeleteUserByFirstNameDELETERequest;
 import hooks.Hooks;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
@@ -123,7 +123,7 @@ public class CreateUserPOSTTest extends Hooks  {
                );
            
            // Send delete request
-            Response deleteResponse = DeleteUserByUserFirstNameDELETERequest.sendDeleteByUserFirstNameRequest(deleteTestCase);
+            Response deleteResponse = DeleteUserByFirstNameDELETERequest.sendDeleteUserByFirstNameRequest(deleteTestCase);
 
             // Assertion
             Assert.assertEquals(deleteResponse.getStatusCode(), 200, "Failed to delete user in @AfterMethod");

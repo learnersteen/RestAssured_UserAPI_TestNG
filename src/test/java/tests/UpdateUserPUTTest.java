@@ -27,7 +27,9 @@ public class UpdateUserPUTTest extends Hooks {
 	    @BeforeMethod
 	    public void createUserBeforePutTest() throws Exception {
 	        // Call DataProvider directly
-	        Object[][] createUserTestData = TestDataProvider.postUserData();
+	    	Object[][] createUserTestData = TestDataProvider.createUserTestData();
+	 	    Map<String, Object> createUserData = (Map<String, Object>) createUserTestData[0][0];
+
 
 	        // Pick the first test data row
 	        createUserData = (Map<String, Object>) createUserTestData[0][0];
@@ -50,21 +52,23 @@ public class UpdateUserPUTTest extends Hooks {
 
 	    Response putResponse = UpdateUserPUTRequest.sendPutRequest(testCase);
 
-	    // 1. Status Code Validation
+	    //  Status Code Validation
 	    int expectedStatus = (int) testCase.getOrDefault("expectedStatusCode", 200);
 	    Assert.assertEquals(putResponse.getStatusCode(), expectedStatus, "Status Code Mismatch");
+	    
+	    if (expectedStatus == 200) {
 
-	    // 2. JSON Schema Validation
+	    //  JSON Schema Validation
 	    if (testCase.containsKey("jsonSchema")) {
 	        String schemaPath = (String) testCase.get("jsonSchema");
 	        putResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath(schemaPath));
 	    }
 
-	    // 3. Data Type Validations
+	    //  Data Type Validations
 	    Assert.assertTrue(putResponse.jsonPath().get("userId") instanceof Integer, "userId should be Integer");
 	    Assert.assertTrue(putResponse.jsonPath().get("userFirstName") instanceof String, "userFirstName should be String");
 	    Assert.assertTrue(putResponse.jsonPath().get("userLastName") instanceof String, "userLastName should be String");
-	    //Assert.assertTrue(postResponse.jsonPath().get("userContactNumber") instanceof Integer, "userContactNumber should be Integer");
+	    //Assert.assertTrue(putResponse.jsonPath().get("userContactNumber") instanceof Integer, "userContactNumber should be Integer");
         
 	    Object contactNumber = putResponse.jsonPath().get("userContactNumber");
 	    Assert.assertTrue(contactNumber instanceof Number, "userContactNumber should be a Number but was: " + contactNumber.getClass().getSimpleName());
@@ -84,12 +88,12 @@ public class UpdateUserPUTTest extends Hooks {
         Assert.assertTrue(userAddress.get("zipCode") instanceof Integer, "zipCode should be Integer");
         
        
-	    // 4. Deserialize actual and expected user
+	    //Deserialize actual and expected user
 	    ObjectMapper mapper = new ObjectMapper();
 	    UserDetails actualUser = mapper.readValue(putResponse.getBody().asString(), UserDetails.class);
 	    UserDetails expectedUser = APIHelperClass.buildUserFromMap(testCase);
 
-	    // 5. POJO Comparisons (based on fields you want)
+	    //POJO Comparisons (based on fields you want)
 	    Assert.assertEquals(actualUser.getUserFirstName(), expectedUser.getUserFirstName());
 	    Assert.assertEquals(actualUser.getUserLastName(), expectedUser.getUserLastName());
 	    Assert.assertEquals(actualUser.getUserContactNumber(), expectedUser.getUserContactNumber(), "Mismatch in userContactNumber");
@@ -126,7 +130,51 @@ public class UpdateUserPUTTest extends Hooks {
 	    
 	    System.out.println("Saved UserId: " + APIHelperClass.getUserId());
 	    System.out.println("Saved UserFirstname: " + APIHelperClass.getUserFirstname());
-	}
+	    
+	    } else {
+	    	 String testCaseId = (String) testCase.get("testCaseId");
+	    	    String expectedErrorMessage = (String) testCase.get("expectedErrorMessage");
+
+	    	    String actualErrorMessage = null;
+	    	    try {
+	    	        actualErrorMessage = putResponse.jsonPath().getString("errorMessage");
+	    	        if (actualErrorMessage == null) {
+	    	            actualErrorMessage = putResponse.jsonPath().getString("error");
+	    	        }
+	    	        if (actualErrorMessage == null) {
+	    	            actualErrorMessage = putResponse.jsonPath().getString("message");
+	    	        }
+	    	    } catch (Exception e) {
+	    	        System.out.println("[" + testCaseId + "] Error extracting error message: " + e.getMessage());
+	    	    }
+
+	    	    System.out.println("---------- TestCase: " + testCaseId + " ----------");
+	    	    System.out.println("Expected Error Message: " + expectedErrorMessage);
+	    	    System.out.println("Actual Error Message: " + actualErrorMessage);
+	    	    System.out.println("Raw Response: " + putResponse.asString());
+	    	    System.out.println("--------------------------------------------------");
+
+	    	    if (expectedErrorMessage != null && !expectedErrorMessage.trim().isEmpty()) {
+	    	        Assert.assertNotNull(actualErrorMessage, "Actual error message should not be null");
+	    	        Assert.assertTrue(actualErrorMessage.toLowerCase().contains(expectedErrorMessage.toLowerCase()),
+	    	                "Expected error message not found in actual error message");
+	    	    } else {
+	    	        System.out.println("INFO [" + testCaseId + "]: No expectedErrorMessage provided — skipping validation.");
+	    	    }
+
+	    	    if (testCase.containsKey("expectedStatusText")) {
+	    	        String expectedStatusText = (String) testCase.get("expectedStatusText");
+	    	        String actualStatusText = putResponse.getStatusLine();
+	    	        Assert.assertTrue(actualStatusText.toLowerCase().contains(expectedStatusText.toLowerCase()),
+	    	                "Expected status text not matched in actual status line");
+	    	    }
+
+	    	    if (testCase.containsKey("jsonSchema")) {
+	    	        String schemaPath = (String) testCase.get("jsonSchema");
+	    	        putResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath(schemaPath));
+	    	    }
+	    	}
+	    }
 	
 	@AfterMethod
 	

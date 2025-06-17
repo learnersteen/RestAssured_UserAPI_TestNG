@@ -32,6 +32,8 @@ public class CreateUserPOSTTest extends Hooks  {
 	    // 1. Status Code Validation
 	    int expectedStatus = (int) testCase.getOrDefault("expectedStatusCode", 201);
 	    Assert.assertEquals(postResponse.getStatusCode(), expectedStatus, "Status Code Mismatch");
+	    
+	    if (expectedStatus == 201) {
 
 	    // 2. JSON Schema Validation
 	    if (testCase.containsKey("jsonSchema")) {
@@ -105,9 +107,54 @@ public class CreateUserPOSTTest extends Hooks  {
 	    
 	    System.out.println("Saved UserId: " + APIHelperClass.getUserId());
 	    System.out.println("Saved UserFirstname: " + APIHelperClass.getUserFirstname());
-	}
+	    
+	    } else {
+	    	
+	    	 String testCaseId = (String) testCase.get("testCaseId");
+	    	    String expectedErrorMessage = (String) testCase.get("expectedErrorMessage");
+
+	    	    String actualErrorMessage = null;
+	    	    try {
+	    	        actualErrorMessage = postResponse.jsonPath().getString("errorMessage");
+	    	        if (actualErrorMessage == null) {
+	    	            actualErrorMessage = postResponse.jsonPath().getString("error");
+	    	        }
+	    	        if (actualErrorMessage == null) {
+	    	            actualErrorMessage = postResponse.jsonPath().getString("message");
+	    	        }
+	    	    } catch (Exception e) {
+	    	        System.out.println("[" + testCaseId + "] Error extracting error message: " + e.getMessage());
+	    	    }
+
+	    	    System.out.println("---------- TestCase: " + testCaseId + " ----------");
+	    	    System.out.println("Expected Error Message: " + expectedErrorMessage);
+	    	    System.out.println("Actual Error Message: " + actualErrorMessage);
+	    	    System.out.println("Raw Response: " + postResponse.asString());
+	    	    System.out.println("--------------------------------------------------");
+
+	    	    if (expectedErrorMessage != null && !expectedErrorMessage.trim().isEmpty()) {
+	    	        Assert.assertNotNull(actualErrorMessage, "Actual error message should not be null");
+	    	        Assert.assertTrue(actualErrorMessage.toLowerCase().contains(expectedErrorMessage.toLowerCase()),
+	    	                "Expected error message not found in actual error message");
+	    	    } else {
+	    	        System.out.println("INFO [" + testCaseId + "]: No expectedErrorMessage provided — skipping validation.");
+	    	    }
+
+	    	    if (testCase.containsKey("expectedStatusText")) {
+	    	        String expectedStatusText = (String) testCase.get("expectedStatusText");
+	    	        String actualStatusText = postResponse.getStatusLine();
+	    	        Assert.assertTrue(actualStatusText.toLowerCase().contains(expectedStatusText.toLowerCase()),
+	    	                "Expected status text not matched in actual status line");
+	    	    }
+
+	    	    if (testCase.containsKey("jsonSchema")) {
+	    	        String schemaPath = (String) testCase.get("jsonSchema");
+	    	        postResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath(schemaPath));
+	    	    }
+	    	}
+	    }
 	
-	@AfterMethod
+@AfterMethod
 	
 	 public void cleanUpUser() throws Exception {
        String firstName = APIHelperClass.getUserFirstname();

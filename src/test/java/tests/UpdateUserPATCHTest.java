@@ -27,8 +27,8 @@ public class UpdateUserPATCHTest extends Hooks {
     @BeforeMethod
     public void createUserBeforePatchTest() throws Exception {
         // 1. Get POST user creation test data
-        Object[][] createUserTestData = TestDataProvider.postUserData();
-        Map<String, Object> createUserData = (Map<String, Object>) createUserTestData[0][0];
+    	Object[][] createUserTestData = TestDataProvider.createUserTestData();
+ 	    Map<String, Object> createUserData = (Map<String, Object>) createUserTestData[0][0];
 
         // 2. Send POST request to create user
         Response createResponse = CreateUserPOSTRequest.sendPostRequest(createUserData);
@@ -62,6 +62,8 @@ public class UpdateUserPATCHTest extends Hooks {
             String schemaPath = (String) patchRequest.get("jsonSchema");
             patchResponse.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath(schemaPath));
         }
+        
+        if (expectedStatus == 200) {
 
         // Deserialize PATCH response user
         UserDetails actualUser = mapper.readValue(patchResponse.getBody().asString(), UserDetails.class);
@@ -135,6 +137,34 @@ public class UpdateUserPATCHTest extends Hooks {
   
         APIHelperClass.setUserId(actualUser.getUserId());
         APIHelperClass.setUserFirstname(actualUser.getUserFirstName());
+    
+        } else {
+            // NEGATIVE CASE - validate error message & status text
+
+            String expectedStatusText = (String) patchRequest.get("expectedStatusText");
+            String actualStatusLine = patchResponse.getStatusLine();
+
+            if (expectedStatusText != null && !expectedStatusText.isEmpty()) {
+                Assert.assertTrue(actualStatusLine.toLowerCase().contains(expectedStatusText.toLowerCase()),
+                    "Expected status text not found in actual status line");
+            }
+
+            String expectedErrorMessage = (String) patchRequest.get("expectedErrorMessage");
+            String actualErrorMessage = null;
+            try {
+                actualErrorMessage = patchResponse.jsonPath().getString("errorMessage");
+                if (actualErrorMessage == null) actualErrorMessage = patchResponse.jsonPath().getString("error");
+                if (actualErrorMessage == null) actualErrorMessage = patchResponse.jsonPath().getString("message");
+            } catch (Exception e) {
+                System.out.println("Error extracting error message: " + e.getMessage());
+            }
+
+            if (expectedErrorMessage != null && !expectedErrorMessage.isEmpty()) {
+                Assert.assertNotNull(actualErrorMessage, "Actual error message should not be null");
+                Assert.assertTrue(actualErrorMessage.toLowerCase().contains(expectedErrorMessage.toLowerCase()),
+                    "Expected error message not found in actual error message");
+            }
+        }
     }
 
     @AfterMethod

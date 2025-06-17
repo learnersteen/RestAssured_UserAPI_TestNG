@@ -1,0 +1,45 @@
+[
+
+   
+     {
+    "testCaseId": "TC01",
+    "method": "PATCH",
+    "endpoint": "/uap/updateuserfields/{{validUserId}}",
+    "expectedStatusCode": 200,
+    "userContactNumber": 2301457900,   
+    "userEmailId": "Venu40.gopala40@gmail.com"
+   
+  },
+  
+{
+    "testCaseId": "TC02",
+    "method": "PATCH",
+    "endpoint": "/uap/updateuserfields/{{validUserId}}",
+    "userFirstName": "test56667",
+    "userLastName": "Vanss",
+    
+
+    
+   "expectedStatusCode": 400,
+   "expectedStatusText": "400 Bad Request"
+
+
+},
+
+{
+    "testCaseId": "TC03",
+    "method": "PATCH",
+    "endpoint": "/uap/updateuserfields",
+    "userFirstName": "test56667",
+    "userLastName": "Vanss",
+    
+
+    
+   "expectedStatusCode": 404,
+   "expectedStatusText": "404 Not Found"
+
+
+}
+
+
+]

@@ -1,0 +1,55 @@
+[
+   
+    {
+    "testCaseId": "TC01",
+    "method": "DELETE",
+    "endpoint": "/uap/deleteuser/{{validUserId}}",
+    "expectedStatusCode": 200,
+    "expectedStatusMessage": "User is deleted successfully"   
+  },
+
+     
+    {
+    "testCaseId": "TC02",
+    "method": "DELETE",
+    "endpoint": "/uap/deleteuser/5868",
+    
+    "expectedStatusCode":404,
+    "expectedStatusText": "400 Not Found",
+    "expectedErrorMessage": "User not found with id: 5868" 
+  },
+
+  {
+    "testCaseId": "TC03",
+    "method": "DELETE",
+    "endpoint": "/uap/deleteuser/0",
+    
+    "expectedStatusCode":404,
+    "expectedStatusText": "400 Not Found",
+    "expectedErrorMessage": "User not found with id: 0" 
+  },
+
+   {
+    "testCaseId": "TC04",
+    "method": "DELETE",
+    "endpoint": "/uap/deleteuser/04645746756666666666666666666666666666666666666666666666666",
+    
+    "expectedStatusCode":400,
+    "expectedStatusText": "400 Bad Request"
+ 
+  },
+
+    {
+    "testCaseId": "TC05",
+    "method": "DELETE",
+    "endpoint": "/uap/deleteuser",
+    
+    "expectedStatusCode":404,
+    "expectedStatusText": "404 Not Found"
+ 
+  }
+
+
+     ]
+
+     

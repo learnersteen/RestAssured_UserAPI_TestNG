@@ -9,18 +9,23 @@ public class TestDataProvider {
 		
 		@DataProvider(name = "createUserPOSTTestData")
 		public static Object[][] postUserData() throws Exception {
+		    return TestCaseLoader.loadTestCasesAsDataProvider("POST_All_Tests.json");
+		}
+		
+		@DataProvider(name = "beforeMethodCreateUser")
+		public static Object[][] createUserTestData() throws Exception {
 		    return TestCaseLoader.loadTestCasesAsDataProvider("post_user_data_Latest-trial.json");
 		}
 		
 		@DataProvider(name = "UpdateUserPUTTestData")
 		public static Object[][] putUserData() throws Exception {
-		    return TestCaseLoader.loadTestCasesAsDataProvider("put_user_data_Latest-trial.json");
+		    return TestCaseLoader.loadTestCasesAsDataProvider("PUT_All_Tests.json");
 		}
 		
 			
 		@DataProvider(name = "UpdateUserPATCHTestData")
 		public static Object[][] patchUserData() throws Exception {
-		    return TestCaseLoader.loadTestCasesAsDataProvider("patch_user_data_Latest-trial.json");
+		    return TestCaseLoader.loadTestCasesAsDataProvider("PATCH_All_Tests.json");
 		}
 		
 		@DataProvider(name = "GetUserByUserIdTestData")

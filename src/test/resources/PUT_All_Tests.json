@@ -1,0 +1,66 @@
+[
+{
+    "testCaseId": "TC01",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/{{validUserId}}",
+    "userFirstName": "Chloe",
+    "userLastName": "Long",
+    "userContactNumber": 3094927894,
+    "userEmailId": "chloe01.long01@example.com",
+    "plotNumber": "plot-91",
+    "street": "Harris Lake",
+    "state": "Colorado",
+    "country": "USA",
+    "zipCode": "80201",
+
+    
+   "expectedStatusCode":200
+   
+
+},
+
+
+{
+    "testCaseId": "TC02",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser/{{validUserId}}",
+    "userFirstName": "test67",
+    "userLastName": "Vanss",
+    "userContactNumber": 2541022540,
+    "userEmailId": "laxmi01.yey0255@example.com",
+    "plotNumber": "plot-91",
+    "street": "Harris Lake",
+    "state": "Colorado",
+    "country": "USA",
+    "zipCode": "80201",
+
+    
+   "expectedStatusCode": 404,
+   "expectedStatusText": "404 Not Found",
+   "expectedErrorMessage": "User not found with id: 21319"
+
+},
+
+{
+    "testCaseId": "TC03",
+    "method": "PUT",
+    "endpoint": "/uap/updateuser",
+    "userFirstName": "test67",
+    "userLastName": "Vanss",
+    "userContactNumber": 2541022540,
+    "userEmailId": "laxmi01.yey0255@example.com",
+    "plotNumber": "plot-91",
+    "street": "Harris Lake",
+    "state": "Colorado",
+    "country": "USA",
+    "zipCode": "80201",
+
+    
+   "expectedStatusCode": 404,
+   "expectedStatusText": "404 Not Found",
+   "expectedErrorMessage": "User not found with id: 21319"
+
+}
+
+
+]

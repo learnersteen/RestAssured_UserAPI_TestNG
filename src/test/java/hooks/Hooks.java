@@ -3,10 +3,15 @@ package hooks;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+
+import com.aventstack.chaintest.plugins.ChainTestListener;
+
 import utils.ConfigReader;
 
 import static io.restassured.RestAssured.given;
 
+@Listeners(ChainTestListener.class)
 public class Hooks {
 
         protected RequestSpecification requestSpec;

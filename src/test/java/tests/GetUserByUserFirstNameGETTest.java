@@ -28,8 +28,8 @@ public class GetUserByUserFirstNameGETTest extends Hooks {
 	@BeforeMethod
 	public void createUserBeforeGetByFirstNameTest() throws Exception {
 	    // 1. Get POST user creation test data (first record)
-	    Object[][] createUserTestData = TestDataProvider.postUserData();
-	    Map<String, Object> createUserData = (Map<String, Object>) createUserTestData[0][0];
+		 Object[][] createUserTestData = TestDataProvider.createUserTestData();
+	     Map<String, Object> createUserData = (Map<String, Object>) createUserTestData[0][0];
 
 	    // 2. Send POST request to create user
 	    Response createResponse = CreateUserPOSTRequest.sendPostRequest(createUserData);

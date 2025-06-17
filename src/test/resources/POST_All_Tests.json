@@ -1,0 +1,293 @@
+[
+   {
+      "testCaseId": "POST_TC_01",
+      "method": "POST",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"",
+      "userLastName":"Doe",
+      "userContactNumber":7865450020,
+      "userEmailId":"john.doe@example.com",
+      "plotNumber":"11-plot1",
+      "street":"Oak Lane",
+      "state":"Nevada",
+      "country":"USA",
+      "zipCode":"89501",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "user FirstName is mandatory and should contains alphabets only"
+   },
+
+      {
+      "testCaseId": "POST_TC_02",
+      "method": "GET",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Emily",
+      "userLastName":"",
+      "userContactNumber":7865412320,
+      "userEmailId":"emily.doe@example.com",
+      "plotNumber":"11-plot1",
+      "street":"Maple Street",
+      "state":"California",
+      "country":"USA",
+      "zipCode":"90210",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User Last Name is mandatory and should contains alphabets only"
+   },
+
+   {
+      "testCaseId": "POST_TC_03",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Emily",
+      "userLastName":"johnson",
+      "userContactNumber":" ",
+      "userEmailId":"emily.doe@example.com",
+      "plotNumber":"11-plot1",
+      "street":"Maple Street",
+      "state":"California",
+      "country":"USA",
+      "zipCode":"90210",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Phone Number is required and should contains 10 numeric values only"
+   },
+
+    {
+      "testCaseId": "POST_TC_04",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Emily",
+      "userLastName":"rao",
+      "userContactNumber":7097554709,
+      "userEmailId":"",
+      "plotNumber":"11-plot1",
+      "street":"Maple Street",
+      "state":"California",
+      "country":"USA",
+      "zipCode":"90210",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User email Id is required and should be in proper email format"
+   },
+
+   {
+      "testCaseId": "POST_TC_05",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Emily",
+      "userLastName":"fisher",
+      "userContactNumber":6540981856,
+      "userEmailId":"emily.fisher@example.com",
+      "plotNumber":"11-plot1",
+      "street":"Maple Street",
+      "state":"California",
+      "country":"USA",
+      "zipCode":"90210",
+
+      "expectedStatusCode":409,
+      "expectedStatusText": "409 Conflict",
+      "expectedErrorMessage": "User already exist with same contact number"
+   },
+
+   {
+      "testCaseId": "POST_TC_06",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Robert",
+      "userLastName":"Vans",
+      "userContactNumber":6540981856,
+      "userEmailId":"lavanyasix1.yelakalasix1@example.com",
+      "plotNumber":"11-plot1",
+      "street":"Maple Street",
+      "state":"California",
+      "country":"USA",
+      "zipCode":"90210",
+
+      "expectedStatusCode":409,
+      "expectedStatusText": "409 Conflict",
+      "expectedErrorMessage": "User already exist with same email id"
+   },
+
+
+      {
+      "testCaseId": "POST_TC_07",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Rob@134",
+      "userLastName":"Vans",
+      "userContactNumber":8956231472,
+      "userEmailId":"Rob.Vans@example.com",
+      "plotNumber":"11-plot2",
+      "street":"Maple Street",
+      "state":"California",
+      "country":"USA",
+      "zipCode":"90210",
+
+      "expectedStatusCode":400,
+      "expectedStatusText":  "400 Bad Request",
+      "expectedErrorMessage": "user FirstName is mandatory and should contains alphabets only"
+   },
+
+   {
+      "testCaseId": "POST_TC_08",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Robert",
+      "userLastName":"Vans@1244",
+      "userContactNumber":8956231473,
+      "userEmailId":"Rob.Vans@example.com",
+      "plotNumber":"11-plot2",
+      "street":"Maple Street",
+      "state":"California",
+      "country":"USA",
+      "zipCode":"90210",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User Last Name is mandatory and should contains alphabets only"
+   },
+
+    {
+      "testCaseId": "POST_TC_09",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Rani",
+      "userLastName":"Desai",
+      "userContactNumber":70122345614,
+      "userEmailId":"rani01.desai049@example.com",
+      "plotNumber":"plot-201",
+      "street":"Greenwood Lane",
+      "state":"Texas",
+      "country":"USA",
+      "zipCode":"73301",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Phone Number is required and should contains 10 numeric values only"
+   },
+
+   {
+      "testCaseId": "POST_TC_10",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Johnson",
+      "userLastName":"Vanca",
+      "userContactNumber":7851234597,
+      "userEmailId":"Robert1.Vans1$%^$^$&$@example.com",
+      "plotNumber":"15-plot2",
+      "street":"Lakeview Drive",
+      "state":"Illinois",
+      "country":"USA",
+      "zipCode":"60007",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "User email Id is required and should be in proper email format"
+   },
+
+     {
+      "testCaseId": "POST_TC_11",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Robertone",
+      "userLastName":"Vansone",
+      "userContactNumber":8956231473,
+      "userEmailId":"Robertone.Vansone@example.com",
+      "plotNumber":"plot23344",
+      "street":"Cedar Street",
+      "state":"Georgia",
+      "country":"USA",
+      "zipCode":"30301",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Plot number should contain alphaNumeric values only"
+   },
+
+
+        {
+      "testCaseId": "POST_TC_12",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Mikeone",
+      "userLastName":"Tysonone",
+      "userContactNumber":8955231473,
+      "userEmailId":"Mikeone.Tysonone@example.com",
+      "plotNumber":"plot-23344",
+      "street":"Oak-Lane",
+      "state":"Nevada",
+      "country":"USA",
+      "zipCode":"89501",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Street should contain alphabet characters only"
+   },
+
+    {
+      "testCaseId": "POST_TC_13",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Mikefour",
+      "userLastName":"Tysonfour",
+      "userContactNumber":8956532575,
+      "userEmailId":"Mikefour.Tysonfour@example.com",
+      "plotNumber":"plot-23295",
+      "street":"OakLane",
+      "state":"Mississippi12",
+      "country":"USA",
+      "zipCode":"39201",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "State should contain alphabet characters only"
+   },
+
+   {
+      "testCaseId": "POST_TC_14",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Mikefive",
+      "userLastName":"Tysonfive",
+      "userContactNumber":8956632575,
+      "userEmailId":"Mikefive.TysoTysonfive@example.com",
+      "plotNumber":"plot-2589",
+      "street":"OakLane",
+      "state":"Mississippi",
+      "country":"USA23",
+      "zipCode":"39201",
+
+      "expectedStatusCode":400,
+      "expectedStatusText": "400 Bad Request",
+      "expectedErrorMessage": "Country should contain alphabet characters only"
+   },
+
+     {
+      "testCaseId": "POST_TC_15",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Michelli",
+      "userLastName":"obama",
+      "userContactNumber":7392698127,
+      "userEmailId":"Michelli.obama@example.com",
+      "plotNumber":"plot-229",
+      "street":"Elm Street",
+      "state":"New York",
+      "country":"USA",
+      "zipCode":"12589",
+
+      "expectedStatusCode":201
+      
+   },
+
+   {
+      "testCaseId": "POST_TC_16",
+      "endpoint":"/uap/createusers",
+      "userFirstName":"Michelli",
+      "userLastName":"obama",
+      "userContactNumber":7392896123,
+      "userEmailId":"Michelli01.obama01@example.com",
+      "plotNumber":"plot-229",
+      "street":"Elm Street",
+      "state":"New York",
+      "country":"USA",
+      "zipCode":"12589",
+
+      "expectedStatusCode":201
+      
+   }
+
+
+]
